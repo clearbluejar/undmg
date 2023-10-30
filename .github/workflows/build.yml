@@ -18,6 +18,6 @@ jobs:
     #- run: nix build
     - run: nix-build -E '(import ./.).defaultPackage.${builtins.currentSystem}'
     - uses: actions/upload-artifact@v3
-    with:
-      name: my-artifact
-      path: ${{ github.workspace }}
+      with:
+        name: my-artifact
+        path: ${{ github.workspace }}
