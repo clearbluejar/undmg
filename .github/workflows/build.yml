@@ -2,6 +2,8 @@ name: "Test"
 on:
   pull_request:
   push:
+  workflow_dispatch:
+    
 jobs:
   tests:
     strategy:
@@ -15,3 +17,7 @@ jobs:
     - uses: cachix/install-nix-action@v14.1
     #- run: nix build
     - run: nix-build -E '(import ./.).defaultPackage.${builtins.currentSystem}'
+    - uses: actions/upload-artifact@v3
+    with:
+      name: my-artifact
+      path: ${{ github.workspace }}
